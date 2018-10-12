@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: fr.ufc.l3info.oprog.ScanetteTest
+-------------------------------------------------------------------------------
+Tests run: 17, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.088 s <<< FAILURE! - in fr.ufc.l3info.oprog.ScanetteTest
+scanner_pas_panier(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.011 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-1> but was:<-3>
+	at fr.ufc.l3info.oprog.ScanetteTest.scanner_pas_panier(ScanetteTest.java:84)
+
+getReferencesInconnues(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: expected:<[222222]> but was:<[]>
+	at fr.ufc.l3info.oprog.ScanetteTest.getReferencesInconnues(ScanetteTest.java:126)
+
+scanner_fake_EAN(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-1> but was:<-2>
+	at fr.ufc.l3info.oprog.ScanetteTest.scanner_fake_EAN(ScanetteTest.java:80)
+
+scanner(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-1> but was:<0>
+	at fr.ufc.l3info.oprog.ScanetteTest.scanner(ScanetteTest.java:87)
+
+supprimer_true(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-1> but was:<0>
+	at fr.ufc.l3info.oprog.ScanetteTest.supprimer_true(ScanetteTest.java:91)
+
+debloquer_debloquee(fr.ufc.l3info.oprog.ScanetteTest)  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<-1>
+	at fr.ufc.l3info.oprog.ScanetteTest.debloquer_debloquee(ScanetteTest.java:71)
+

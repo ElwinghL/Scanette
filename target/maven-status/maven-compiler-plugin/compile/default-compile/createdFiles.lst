@@ -1,0 +1,7 @@
+fr/ufc/l3info/oprog/Article.class
+fr/ufc/l3info/oprog/ProductDBFailureException.class
+fr/ufc/l3info/oprog/ArticleNotFoundException.class
+fr/ufc/l3info/oprog/Caisse.class
+fr/ufc/l3info/oprog/Scanette.class
+fr/ufc/l3info/oprog/ArticleDB.class
+fr/ufc/l3info/oprog/FileFormatException.class
