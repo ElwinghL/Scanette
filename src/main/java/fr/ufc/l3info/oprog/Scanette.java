@@ -44,8 +44,13 @@ public class Scanette {
      * -1 si celle-ci n'était pas bloquée.
      */
     public int debloquer() {
-        if (!bloquee) return -1;
-        else return 0;
+        if (!bloquee) {
+            return -1;
+        }
+        else {
+            bloquee = false;
+            return 0;
+        }
     }
 
 

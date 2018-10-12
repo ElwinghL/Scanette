@@ -68,6 +68,7 @@ public class ScanetteTest {
     }
     @Test
     public void debloquer_debloquee() {
+        ExempleBip.debloquer();
         assertEquals(ExempleBip.debloquer(), -1);
     }
 
@@ -92,8 +93,8 @@ public class ScanetteTest {
     }
     @Test
     public void supprimer_false() {
-        assertEquals(ExempleBipScanne.supprimer(Tropicana.getCodeEAN13()),-1); // Pas dans le panier
-        assertEquals(ExempleBipScanne.supprimer(Trapicono.getCodeEAN13()),-1); // Pas correct
+        assertEquals(ExempleBipScanne.supprimer(Tropicana.getCodeEAN13()),-2); // Pas dans le panier
+        assertEquals(ExempleBipScanne.supprimer(Trapicono.getCodeEAN13()),-2); // Pas correct
     }
     @Test
     public void supprimer_bloquee() {
@@ -104,7 +105,7 @@ public class ScanetteTest {
     public void quantite() {
         ExempleBipScanne.scanner(Cookie.getCodeEAN13());
         assertEquals(ExempleBipbloquee.quantite(Cookie.getCodeEAN13()), 0);
-        assertEquals(ExempleBipScanne.quantite(Cookie.getCodeEAN13()), 0); //Un dans le Before et 1 dans Test scanner
+        assertEquals(ExempleBipScanne.quantite(Cookie.getCodeEAN13()), 2);
     }
 
     @Test
