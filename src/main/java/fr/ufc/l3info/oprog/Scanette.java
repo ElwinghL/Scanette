@@ -193,11 +193,13 @@ public class Scanette {
         }
         switch (c.connexion(this)) {
             case 0:  // pas de relecture -> job's done
+                abandon();
                 return 0;
             case 1: // relecture -> il reste du boulot
                 relecture = true;
                 return 1;
             case -1: // erreur du côté de la caisse
+                abandon();
                 return -1;
         }
         return 1;

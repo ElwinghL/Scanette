@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Article.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Scanette</a> &gt; <a href="index.source.html" class="el_package">fr.ufc.l3info.oprog</a> &gt; <span class="el_source">Article.java</span></div><h1>Article.java</h1><pre class="source lang-java linenums">package fr.ufc.l3info.oprog;
+
+/*
+ * Classe décrivant un article.
+ *
+ *   _______ _____  __    ____        _   _ _   _____
+ *  |__   __|  __ \/_ |  / __ \      | | (_) | |  __ \
+ *     | |  | |__) || | | |  | |_   _| |_ _| | | |__) | __ ___   __ _
+ *     | |  |  ___/ | | | |  | | | | | __| | | |  ___/ '__/ _ \ / _` |
+ *     | |  | |     | | | |__| | |_| | |_| | | | |   | | | (_) | (_| |
+ *     |_|  |_|     |_|  \____/ \__,_|\__|_|_| |_|   |_|  \___/ \__, |
+ *                                                               __/ |
+ *                                                              |___/
+ */
+public class Article
+{
+
+  /** Code EAN 13 de l'article */
+  long codeEAN13;
+
+  /** Dénomination commerciale de l'article */
+  String nom;
+
+  /** Prix unitaire de l'article */
+  double prixUnitaire;
+
+  /** Constructeur
+   * @param _ean13 le code EAN13 de l'article
+   * @param _pu le prix unitaire de l'article
+   * @param _nom le nom de l'article
+   */
+  public Article(long _ean13, double _pu, String _nom)
+<span class="fc" id="L33">  {</span>
+<span class="fc" id="L34">    codeEAN13 = _ean13;</span>
+<span class="fc" id="L35">    prixUnitaire = _pu;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    nom = (_nom == null) ? &quot;&quot; : _nom;</span>
+<span class="fc" id="L37">  }</span>
+
+  /**
+   * Accesseur pour le nom de l'article.
+   * @return le nom de l'article
+   */
+  public String getNom()
+  {
+<span class="fc" id="L45">    return nom;</span>
+  }
+
+  /**
+   * Accesseur pour le code barre (EAN13) de l'article.
+   * @return le code EAN13 de l'article
+   */
+  public long getCodeEAN13()
+  {
+<span class="fc" id="L54">    return codeEAN13;</span>
+  }
+
+  /**
+   * Accesseur pour le prix unitaire de l'article
+   * @return la valeur du prix unitaire de l'article
+   */
+  public double getPrixUnitaire()
+  {
+<span class="fc" id="L63">    return prixUnitaire;</span>
+  }
+
+  /**
+   * Teste si deux articles sont égaux (i.e. s'ils ont le même code EAN13).
+   * @param a l'article à comparer à l'objet courant.
+   * @return true si les deux articles sont égaux, false sinon.
+   */
+  public boolean equals(Article a)
+  {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">      if (this == a)</span>
+      {
+<span class="fc" id="L75">          return true;</span>
+      }
+<span class="fc bfc" id="L77" title="All 2 branches covered.">      if (a == null)</span>
+      {
+<span class="fc" id="L79">          return false;</span>
+      }
+<span class="fc" id="L81">      Article other = a;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">      return codeEAN13 == other.codeEAN13;</span>
+  }
+  /**
+   * Vérifie si le code EAN13 est bien correct.
+   * @return true si le code EAN13 est valide, false sinon.
+   */
+  public boolean isValidEAN13()
+  {
+  	//On utilise la méthode de la clé de contrôle comme suit : https://fr.wikipedia.org/wiki/EAN_13
+<span class="fc" id="L91">  	String EAN = Long.toString(codeEAN13);</span>
+<span class="fc" id="L92">  	int ponderation[] = {1,3,1,3,1,3,1,3,1,3,1,3};</span>
+<span class="fc" id="L93">  	int somme = 0;</span>
+
+<span class="fc bfc" id="L95" title="All 2 branches covered.">  	if (EAN.length() &gt; 13)</span>
+    {
+<span class="fc" id="L97">        return false;</span>
+    }
+
+<span class="fc bfc" id="L100" title="All 2 branches covered.">  	while (EAN.length() &lt; 13)</span>
+    {
+<span class="fc" id="L102">        EAN = &quot;0&quot; + EAN;</span>
+    }
+
+<span class="fc bfc" id="L105" title="All 2 branches covered.">  	for (int i = 0; i &lt; 12; i++)</span>
+    {
+<span class="fc" id="L107">  		somme += ponderation[i] * Character.getNumericValue(EAN.charAt(i));</span>
+  	}
+<span class="fc bfc" id="L109" title="All 2 branches covered.">  	if (somme%10 == 0)</span>
+    {
+<span class="fc bfc" id="L111" title="All 2 branches covered.">  		return ((somme%10) == Character.getNumericValue(EAN.charAt(12)));</span>
+  	}
+  	else
+    {
+<span class="fc bfc" id="L115" title="All 2 branches covered.">      return ((10-somme%10) == Character.getNumericValue(EAN.charAt(12)));</span>
+  	}
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

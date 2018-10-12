@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.ufc.l3info.oprog.ScanetteTest" time="0.088" tests="17" errors="0" skipped="0" failures="6">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.ufc.l3info.oprog.ScanetteTest" time="0.792" tests="17" errors="1" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value=""/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/test-classes:/home/e1w1ngh/IdeaProjects/Scanette/target/classes:/home/e1w1ngh/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/e1w1ngh/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/e1w1ngh/.m2/repository/com/opencsv/opencsv/4.2/opencsv-4.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-text/1.3/commons-text-1.3.jar:/home/e1w1ngh/.m2/repository/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar:/home/e1w1ngh/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/e1w1ngh/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar:/home/e1w1ngh/.m2/repository/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar:/home/e1w1ngh/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:"/>
+    <property name="java.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/test-classes:/home/e1w1ngh/IdeaProjects/Scanette/target/classes:/home/e1w1ngh/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/e1w1ngh/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/e1w1ngh/.m2/repository/com/opencsv/opencsv/4.2/opencsv-4.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-text/1.3/commons-text-1.3.jar:/home/e1w1ngh/.m2/repository/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar:/home/e1w1ngh/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/e1w1ngh/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar:/home/e1w1ngh/.m2/repository/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-dep/1.9.1/byte-buddy-dep-1.9.1.jar:/home/e1w1ngh/.m2/repository/org/ow2/asm/asm/7.0-beta/asm-7.0-beta.jar:/home/e1w1ngh/.m2/repository/org/ow2/asm/asm-commons/7.0-beta/asm-commons-7.0-beta.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.1/byte-buddy-agent-1.9.1.jar:/home/e1w1ngh/.m2/repository/org/objenesis/objenesis/3.0/objenesis-3.0.jar:"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/e1w1ngh/IdeaProjects/Scanette/target/surefire/surefirebooter10363821333954281864.jar /home/e1w1ngh/IdeaProjects/Scanette/target/surefire 2018-10-12T11-03-48_591-jvmRun1 surefire17702112863127408401tmp surefire_012167042844251166849tmp"/>
+    <property name="sun.java.command" value="/home/e1w1ngh/IdeaProjects/Scanette/target/surefire/surefirebooter6188601251618075001.jar /home/e1w1ngh/IdeaProjects/Scanette/target/surefire 2018-10-12T12-23-17_501-jvmRun1 surefire13093738360701270931tmp surefire_04457195078573356221tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/test-classes:/home/e1w1ngh/IdeaProjects/Scanette/target/classes:/home/e1w1ngh/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/e1w1ngh/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/e1w1ngh/.m2/repository/com/opencsv/opencsv/4.2/opencsv-4.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-text/1.3/commons-text-1.3.jar:/home/e1w1ngh/.m2/repository/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar:/home/e1w1ngh/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/e1w1ngh/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar:/home/e1w1ngh/.m2/repository/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar:/home/e1w1ngh/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:"/>
+    <property name="surefire.test.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/test-classes:/home/e1w1ngh/IdeaProjects/Scanette/target/classes:/home/e1w1ngh/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/e1w1ngh/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/e1w1ngh/.m2/repository/com/opencsv/opencsv/4.2/opencsv-4.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-text/1.3/commons-text-1.3.jar:/home/e1w1ngh/.m2/repository/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar:/home/e1w1ngh/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/e1w1ngh/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/e1w1ngh/.m2/repository/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar:/home/e1w1ngh/.m2/repository/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-dep/1.9.1/byte-buddy-dep-1.9.1.jar:/home/e1w1ngh/.m2/repository/org/ow2/asm/asm/7.0-beta/asm-7.0-beta.jar:/home/e1w1ngh/.m2/repository/org/ow2/asm/asm-commons/7.0-beta/asm-commons-7.0-beta.jar:/home/e1w1ngh/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.1/byte-buddy-agent-1.9.1.jar:/home/e1w1ngh/.m2/repository/org/objenesis/objenesis/3.0/objenesis-3.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/e1w1ngh"/>
     <property name="user.language" value="fr"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/surefire/surefirebooter10363821333954281864.jar"/>
+    <property name="surefire.real.class.path" value="/home/e1w1ngh/IdeaProjects/Scanette/target/surefire/surefirebooter6188601251618075001.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11+24-Ubuntu-118.04"/>
     <property name="user.name" value="e1w1ngh"/>
@@ -57,45 +57,47 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="scanner_pas_panier" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.011">
-    <failure message="expected:&lt;-1&gt; but was:&lt;-3&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-1> but was:<-3>
-	at fr.ufc.l3info.oprog.ScanetteTest.scanner_pas_panier(ScanetteTest.java:84)
-]]></failure>
+  <testcase name="scanner_pas_panier" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
+  <testcase name="Scanette_no_file" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
+  <testcase name="quantite" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
+  <testcase name="abandon" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
+  <testcase name="Scanette" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.001"/>
+  <testcase name="getReferencesInconnues" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
+  <testcase name="transmission" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.762">
+    <error message="&#10;Mockito cannot mock this class: class fr.ufc.l3info.oprog.Caisse.&#10;&#10;Mockito can only mock non-private &amp; non-final classes.&#10;If you&apos;re not sure why you&apos;re getting this error, please report to the mailing list.&#10;&#10;&#10;Java               : 11&#10;JVM vendor name    : Oracle Corporation&#10;JVM vendor version : 11+24-Ubuntu-118.04&#10;JVM name           : OpenJDK 64-Bit Server VM&#10;JVM version        : 11+24-Ubuntu-118.04&#10;JVM info           : mixed mode, sharing&#10;OS name            : Linux&#10;OS version         : 4.15.0-36-generic&#10;&#10;&#10;Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection" type="org.mockito.exceptions.base.MockitoException"><![CDATA[org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class fr.ufc.l3info.oprog.Caisse.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 11
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 11+24-Ubuntu-118.04
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 11+24-Ubuntu-118.04
+JVM info           : mixed mode, sharing
+OS name            : Linux
+OS version         : 4.15.0-36-generic
+
+
+Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
+	at fr.ufc.l3info.oprog.ScanetteTest.transmission(ScanetteTest.java:143)
+Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
+	at fr.ufc.l3info.oprog.ScanetteTest.transmission(ScanetteTest.java:143)
+Caused by: java.lang.IllegalArgumentException: Unknown Java version: 11
+	at fr.ufc.l3info.oprog.ScanetteTest.transmission(ScanetteTest.java:143)
+]]></error>
   </testcase>
-  <testcase name="Scanette_no_file" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.003"/>
-  <testcase name="quantite" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
-  <testcase name="abandon" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
-  <testcase name="Scanette" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.004"/>
-  <testcase name="getReferencesInconnues" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002">
-    <failure message="expected:&lt;[222222]&gt; but was:&lt;[]&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<[222222]> but was:<[]>
-	at fr.ufc.l3info.oprog.ScanetteTest.getReferencesInconnues(ScanetteTest.java:126)
-]]></failure>
-  </testcase>
-  <testcase name="transmission" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.033"/>
-  <testcase name="debloquer_bloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0"/>
-  <testcase name="supprimer_false" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.001"/>
+  <testcase name="debloquer_bloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
+  <testcase name="supprimer_false" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
   <testcase name="supprimer_bloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
-  <testcase name="scanner_fake_EAN" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.003">
-    <failure message="expected:&lt;-1&gt; but was:&lt;-2&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-1> but was:<-2>
-	at fr.ufc.l3info.oprog.ScanetteTest.scanner_fake_EAN(ScanetteTest.java:80)
-]]></failure>
-  </testcase>
-  <testcase name="getArticles" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.004"/>
-  <testcase name="Scanette_fake_file" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
-  <testcase name="scanner_bloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.003"/>
-  <testcase name="scanner" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002">
-    <failure message="expected:&lt;-1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-1> but was:<0>
-	at fr.ufc.l3info.oprog.ScanetteTest.scanner(ScanetteTest.java:87)
-]]></failure>
-  </testcase>
-  <testcase name="supprimer_true" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002">
-    <failure message="expected:&lt;-1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-1> but was:<0>
-	at fr.ufc.l3info.oprog.ScanetteTest.supprimer_true(ScanetteTest.java:91)
-]]></failure>
-  </testcase>
-  <testcase name="debloquer_debloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.004">
-    <failure message="expected:&lt;0&gt; but was:&lt;-1&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0> but was:<-1>
-	at fr.ufc.l3info.oprog.ScanetteTest.debloquer_debloquee(ScanetteTest.java:71)
-]]></failure>
-  </testcase>
+  <testcase name="scanner_fake_EAN" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
+  <testcase name="getArticles" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
+  <testcase name="Scanette_fake_file" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.003"/>
+  <testcase name="scanner_bloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
+  <testcase name="scanner" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
+  <testcase name="supprimer_true" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.003"/>
+  <testcase name="debloquer_debloquee" classname="fr.ufc.l3info.oprog.ScanetteTest" time="0.002"/>
 </testsuite>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ArticleDB.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Scanette</a> &gt; <a href="index.source.html" class="el_package">fr.ufc.l3info.oprog</a> &gt; <span class="el_source">ArticleDB.java</span></div><h1>ArticleDB.java</h1><pre class="source lang-java linenums">package fr.ufc.l3info.oprog;
+/*
+ * Classe décrivant la base de données des articles référencés.
+ *
+ *   _______ _____ ___     ____        _   _ _   _____
+ *  |__   __|  __ \__ \   / __ \      | | (_) | |  __ \
+ *     | |  | |__) | ) | | |  | |_   _| |_ _| | | |__) | __ ___   __ _
+ *     | |  |  ___/ / /  | |  | | | | | __| | | |  ___/ '__/ _ \ / _` |
+ *     | |  | |    / /_  | |__| | |_| | |_| | | | |   | | | (_) | (_| |
+ *     |_|  |_|   |____|  \____/ \__,_|\__|_|_| |_|   |_|  \___/ \__, |
+ *                                                                __/ |
+ *                                                               |___/
+ */
+
+
+//import com.opencsv.CSVReader;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.util.HashSet;
+import java.util.Set;
+
+class FileFormatException extends Exception
+{
+    FileFormatException()
+<span class="fc" id="L29">    {</span>
+<span class="fc" id="L30">        System.out.println(&quot;Votre fichier est invalide.&quot;);</span>
+<span class="fc" id="L31">    }</span>
+}
+class ArticleNotFoundException extends Exception
+{
+    ArticleNotFoundException()
+<span class="fc" id="L36">    {</span>
+<span class="fc" id="L37">        System.out.println(&quot;Cet article n'existe pas.&quot;);</span>
+<span class="fc" id="L38">    }</span>
+}
+public class ArticleDB
+{
+    Set&lt;Article&gt; DataBase;
+
+    public ArticleDB()
+<span class="fc" id="L45">    {</span>
+<span class="fc" id="L46">        DataBase = new HashSet&lt;Article&gt;();</span>
+<span class="fc" id="L47">    }</span>
+    public void init(String fileCSV) throws IOException, FileFormatException
+    {
+<span class="fc" id="L50">        String line = &quot;&quot;;</span>
+
+<span class="fc" id="L52">        BufferedReader br = new BufferedReader(new FileReader(fileCSV));</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            while ((line = br.readLine()) != null) {</span>
+
+                // use comma as separator
+<span class="fc" id="L57">                String[] data = line.split(&quot;,&quot;);</span>
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                if (data.length == 3)</span>
+                {
+<span class="fc" id="L61">                    long EAN13 = Long.parseLong(data[0]);</span>
+<span class="fc" id="L62">                    double pu = Double.parseDouble(data[1]);</span>
+<span class="fc" id="L63">                    String nom = data[2];</span>
+
+<span class="fc" id="L65">                    Article art = new Article(EAN13, pu, nom);</span>
+<span class="pc bpc" id="L66" title="3 of 6 branches missed.">                    if (art.isValidEAN13() &amp;&amp; (art.nom != null) &amp;&amp; (pu &gt; 0))</span>
+                    {
+<span class="fc" id="L68">                        DataBase.add(art);</span>
+                    }
+                    else
+                    {
+<span class="nc" id="L72">                        DataBase.clear();</span>
+<span class="nc" id="L73">                        throw new FileFormatException();</span>
+                    }
+<span class="fc" id="L75">                }</span>
+
+                else
+                {
+<span class="fc" id="L79">                    DataBase.clear();</span>
+<span class="fc" id="L80">                    throw new FileFormatException();</span>
+                }
+<span class="fc" id="L82">            }</span>
+<span class="fc" id="L83">    }</span>
+
+    public int getTailleDB()
+    {
+<span class="fc" id="L87">        return DataBase.size();</span>
+    }
+
+    public Article getArticle(long EAN) throws ArticleNotFoundException
+    {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (DataBase.isEmpty())</span>
+        {
+<span class="fc" id="L94">            throw new ArticleNotFoundException();</span>
+        }
+        else
+        {
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">            for (Article art : DataBase)</span>
+            {
+<span class="fc bfc" id="L101" title="All 2 branches covered.">                if (EAN == art.codeEAN13)</span>
+                {
+<span class="fc" id="L103">                    return art;</span>
+                }
+<span class="fc" id="L105">            }</span>
+            //Si pas de retour en fin de boucle
+<span class="fc" id="L107">            throw new ArticleNotFoundException();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

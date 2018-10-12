@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Scanette,fr.ufc.l3info.oprog,Article,0,165,0,20,0,26,0,16,0,6
+Scanette,fr.ufc.l3info.oprog,ProductDBFailureException,0,6,0,0,0,3,0,1,0,1
+Scanette,fr.ufc.l3info.oprog,ArticleDB,7,113,3,13,2,27,3,9,0,4
+Scanette,fr.ufc.l3info.oprog,FileFormatException,0,6,0,0,0,3,0,1,0,1
+Scanette,fr.ufc.l3info.oprog,Caisse,5,0,0,0,2,0,2,0,2,0
+Scanette,fr.ufc.l3info.oprog,ArticleNotFoundException,0,6,0,0,0,3,0,1,0,1
+Scanette,fr.ufc.l3info.oprog,Scanette,50,204,13,19,16,54,11,15,1,8

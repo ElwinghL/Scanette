@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Scanette.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Scanette</a> &gt; <a href="index.source.html" class="el_package">fr.ufc.l3info.oprog</a> &gt; <span class="el_source">Scanette.java</span></div><h1>Scanette.java</h1><pre class="source lang-java linenums">package fr.ufc.l3info.oprog;
+
+import java.io.FileNotFoundException;
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+class ProductDBFailureException extends Exception {
+
+<span class="fc" id="L10">    ProductDBFailureException() {</span>
+<span class="fc" id="L11">        System.out.println(&quot;Cet article n'a pas été trouvé.&quot;);</span>
+<span class="fc" id="L12">    }</span>
+}
+/**
+ * Classe représentant la scanette.
+ */
+public class Scanette {
+<span class="fc" id="L18">    private boolean bloquee = true;</span>
+<span class="fc" id="L19">    public boolean relecture = false;</span>
+<span class="fc" id="L20">    public ArticleDB DB = new ArticleDB();</span>
+<span class="fc" id="L21">    private Map&lt;Long, Integer&gt; Panier = new HashMap&lt;Long, Integer&gt;();</span>
+<span class="fc" id="L22">    private Set&lt;Long&gt; Inconnu = new HashSet&lt;&gt;();</span>
+
+    /**
+     * Créé une scanette en l'initialisant avec la base de données d'articles dont
+     * le chemin est donné en paramètre.
+     *
+     * @param pathToProductFile chemin vers le fichier de la base de données d'articles
+     * @throws ProductDBFailureException lorsque la base de données n'a pas pu s'initialiser.
+     */
+<span class="fc" id="L31">    public Scanette(String pathToProductFile) throws ProductDBFailureException {</span>
+        try {
+<span class="fc" id="L33">            DB.init(pathToProductFile);</span>
+<span class="fc" id="L34">        } catch (Exception e) {</span>
+<span class="fc" id="L35">            throw new ProductDBFailureException();</span>
+<span class="fc" id="L36">        }</span>
+<span class="fc" id="L37">    }</span>
+
+    /**
+     * Permet de débloquer la scanette pour un client donné. On supposera que
+     * l'on ne gère pas les identifiants des clients.
+     *
+     * @return 0 si la scanette a bien été débloquée,
+     * -1 si celle-ci n'était pas bloquée.
+     */
+    public int debloquer() {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (!bloquee) {</span>
+<span class="fc" id="L48">            return -1;</span>
+        }
+        else {
+<span class="fc" id="L51">            bloquee = false;</span>
+<span class="fc" id="L52">            return 0;</span>
+        }
+    }
+
+
+    /**
+     * Scanne un produit par l'intermédiaire de son code EAN13.
+     * Cette méthode sert à la fois pour ajouter un produit au
+     * panier du client et pour effectuer une relecture.
+     *
+     * @param ean13 le code EAN13 du produit scanné
+     * @return 0 si le scan du produit s'est correctement déroulé.
+     * -1 si la scanette n'était pas dans le bon état
+     * -2 si le produit scanné a provoqué une erreur
+     * (produit non reconnu ou produit inexistant dans le panier)
+     */
+    public int scanner(long ean13) {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (bloquee) {</span>
+<span class="fc" id="L70">            return -1;</span>
+        }
+        Article article;
+        try {
+<span class="fc" id="L74">            article = DB.getArticle(ean13);</span>
+<span class="fc" id="L75">        } catch (ArticleNotFoundException e) {</span>
+<span class="fc" id="L76">            Inconnu.add(ean13);</span>
+<span class="fc" id="L77">            return -2;</span>
+<span class="fc" id="L78">        }</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if (article.isValidEAN13()) {</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            if (relecture) {</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">                if (Panier.containsKey(ean13)) {</span>
+<span class="nc" id="L82">                    return 0;</span>
+                }
+<span class="fc" id="L84">                return -3;</span>
+            } else {
+<span class="fc bfc" id="L86" title="All 2 branches covered.">                if (Panier.containsKey(ean13)) {</span>
+                    int number;
+<span class="fc" id="L88">                    number = Panier.get(ean13);</span>
+<span class="fc" id="L89">                    Panier.put(ean13, number + 1);</span>
+<span class="fc" id="L90">                    return 0;</span>
+                }
+<span class="fc" id="L92">                Panier.put(ean13, 1);</span>
+<span class="fc" id="L93">                return 0;</span>
+            }
+        }
+<span class="nc" id="L96">        return -2;</span>
+    }
+
+
+    /**
+     * Supprime du panier le produit dont le code EAN13 est donné en paramètre.
+     *
+     * @param ean13 le code EAN du produit à supprimer.
+     * @return 0 si l'occurrence du produit a bien été supprimée,
+     * -1 si la scanette n'était pas dans le bon état,
+     * -2 si le produit n'existait pas dans le panier
+     */
+    public int supprimer(long ean13) {
+<span class="pc bpc" id="L109" title="1 of 4 branches missed.">        if (bloquee || relecture) {</span>
+<span class="fc" id="L110">            return -1;</span>
+        }
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (Panier.containsKey(ean13)) {</span>
+            int number;
+<span class="fc" id="L114">            number = Panier.get(ean13);</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">            if (number == 1) {</span>
+<span class="nc" id="L116">                Panier.remove(ean13);</span>
+<span class="nc" id="L117">                return 0;</span>
+            }
+<span class="fc" id="L119">            Panier.put(ean13, number - 1);</span>
+<span class="fc" id="L120">            return 0;</span>
+        }
+<span class="fc" id="L122">        return -2;</span>
+    }
+
+    /**
+     * Permet de connaître la quantité d'un produit dans le panier.
+     *
+     * @param ean13 le code EAN13 du produit dont on souhaite connaître la quantité.
+     * @return le nombre d'occurrences du produit dans le panier.
+     */
+    public int quantite(long ean13) {
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (Panier.containsKey(ean13)) {</span>
+            int number;
+<span class="fc" id="L134">            number = Panier.get(ean13);</span>
+<span class="fc" id="L135">            return number;</span>
+        }
+        else {
+<span class="fc" id="L138">            return 0;</span>
+        }
+    }
+
+
+    /**
+     * Permet d'abandonner toute transaction en cours et de re-bloquer la scanette.
+     */
+    public void abandon() {
+<span class="fc" id="L147">        bloquee = true;</span>
+<span class="fc" id="L148">        Panier = new HashMap&lt;Long, Integer&gt;(); // Reset Panier</span>
+<span class="fc" id="L149">        Inconnu = new HashSet&lt;Long&gt;();</span>
+<span class="fc" id="L150">    }</span>
+
+
+    /**
+     * Permet de consulter les codes EAN qui n'ont pas été reconnus lors des courses.
+     *
+     * @return Un ensemble de codes EAN13 non reconnus.
+     */
+    public Set&lt;Long&gt; getReferencesInconnues() { //l'ensemble vide est géré par abandon
+<span class="fc" id="L159">        return Inconnu;</span>
+    }
+
+
+    /**
+     * Permet d'extraire les articles composant le panier du client.
+     *
+     * @return Un ensemble d'Article reconnus par la scanette.
+     */
+    public Set&lt;Article&gt; getArticles() throws ArticleNotFoundException { //l'ensemble vide est géré par abandon
+<span class="fc" id="L169">        Set&lt;Article&gt; scan = new HashSet&lt;Article&gt;();</span>
+<span class="fc" id="L170">        Set&lt;Long&gt; ean = Panier.keySet();</span>
+<span class="fc" id="L171">        Iterator it = ean.iterator();</span>
+<span class="pc bpc" id="L172" title="1 of 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L173">            long ean13 = (long) it.next();</span>
+<span class="nc" id="L174">            Article article = DB.getArticle(ean13);</span>
+<span class="nc" id="L175">            scan.add(article);</span>
+<span class="nc" id="L176">        }</span>
+<span class="fc" id="L177">        return scan;</span>
+    }
+
+
+    /**
+     * Permet de transmettre les informations de la scanette à la caisse en se connectant
+     * à celle-ci. En fonction de la réponse de la caisse, la scanette changera d'état.
+     *
+     * @param c La caisse avec laquelle la scanette interagit.
+     * @return 0 si la scanette a terminé son travail (pas de relecture)
+     * 1 si une relecture est demandée par la caisse
+     * -1 en cas d'erreur
+     */
+    public int transmission(Caisse c) {
+<span class="nc bnc" id="L191" title="All 4 branches missed.">        if (relecture || bloquee) {</span>
+<span class="nc" id="L192">            return -1;</span>
+        }
+<span class="nc bnc" id="L194" title="All 4 branches missed.">        switch (c.connexion(this)) {</span>
+            case 0:  // pas de relecture -&gt; job's done
+<span class="nc" id="L196">                return 0;</span>
+            case 1: // relecture -&gt; il reste du boulot
+<span class="nc" id="L198">                relecture = true;</span>
+<span class="nc" id="L199">                return 1;</span>
+            case -1: // erreur du côté de la caisse
+<span class="nc" id="L201">                return -1;</span>
+        }
+<span class="nc" id="L203">        return 1;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

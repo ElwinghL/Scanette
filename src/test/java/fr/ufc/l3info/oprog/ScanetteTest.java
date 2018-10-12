@@ -4,6 +4,7 @@ package fr.ufc.l3info.oprog;
 //JUnit
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -137,6 +138,23 @@ public class ScanetteTest {
     }
 
     @Test
-    public void transmission() {
+    public void transmission() throws ProductDBFailureException {
+        /*
+        Impossible de tester le mock. JdK 11 provoque l'erreur Cannot define class using reflection
+        Et jdk 8 provoque unr erreur avec mojoexecution
+         */
+
+
+
+        Scanette scan = new Scanette(path1);
+        Caisse mockCaisse = Mockito.mock(Caisse.class);
+        Mockito.when(mockCaisse.connexion(scan)).thenReturn(-1);
+        assertEquals(scan.transmission(mockCaisse),-1); // Parce que bloquée
+        scan.debloquer();
+        Mockito.when(mockCaisse.connexion(scan)).thenReturn(0);
+        assertEquals(scan.transmission(mockCaisse),0); // Parce que bloquée
+        scan.debloquer();
+        Mockito.when(mockCaisse.connexion(scan)).thenReturn(1);
+        assertEquals(scan.transmission(mockCaisse),1);
     }
 }
